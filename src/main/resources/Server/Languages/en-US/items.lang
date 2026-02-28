@@ -1,0 +1,6 @@
+SimpleRelics_EmeraldCross.name = Emerald Cross
+SimpleRelics_EmeraldCross.description = Restores 50% of maximum health on fatal damage.
+SimpleRelics_EmeraldCross.notification_title = I SAVED YOU
+SimpleRelics_EmeraldCross.notification_subtitle = You are so lucky...
+
+
