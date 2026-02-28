@@ -1,7 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "Emerald Cross",
-    "Description": "Restores 50% of maximum health on fatal damage."
+    "Name": "items.SimpleRelics_EmeraldCross.name",
+    "Description": "items.SimpleRelics_EmeraldCross.description"
   },
   "Id": "SimpleRelics_EmeraldCross",
   "Model": "Items/SimpleRelics_EmeraldCross/model.blockymodel",

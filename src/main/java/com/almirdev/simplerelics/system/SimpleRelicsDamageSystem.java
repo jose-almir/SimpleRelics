@@ -118,8 +118,8 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
         }
 
         var packetHandler = playerRef.getPacketHandler();
-        var primaryMessage = Message.raw(result.notificationTitle()).color(Color.RED);
-        var secondaryMessage = Message.raw(result.notificationSubtitle()).color(Color.GRAY);
+        var primaryMessage = Message.translation(result.notificationTitle()).color(Color.GREEN);
+        var secondaryMessage = Message.translation(result.notificationSubtitle()).color(Color.GRAY);
 
         NotificationUtil.sendNotification(
                 packetHandler,

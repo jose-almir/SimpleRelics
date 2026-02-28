@@ -21,8 +21,8 @@ public class EmeraldCrossRelicInterceptor extends FatalDamageInterceptor {
         return new FatalDamageResult(
                 health.getMax() * 0.5f,
                 "SFX_Divine_Respawn",
-                "I SAVED YOU",
-                "You are so lucky..."
+                "items.SimpleRelics_EmeraldCross.notification_title",
+                "items.SimpleRelics_EmeraldCross.notification_subtitle"
         );
     }
 }
