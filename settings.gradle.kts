@@ -1,4 +1,4 @@
-rootProject.name = "dev.hytalemodding"
+rootProject.name = "com.almirdev.simplerelics"
 
 plugins {
     // See documentation on https://scaffoldit.dev
@@ -21,8 +21,8 @@ hytale {
     }
 
     manifest {
-        Group = "HytaleModding"
-        Name = "ExamplePlugin"
-        Main = "dev.hytalemodding.ExamplePlugin"
+        Group = "com.almirdev.simplerelics"
+        Name = "SimpleRelics"
+        Main = "com.almirdev.simplerelics.SimpleRelicsPlugin"
     }
 }
