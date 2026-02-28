@@ -1,5 +1,6 @@
 package com.almirdev.simplerelics;
 
+import com.almirdev.simplerelics.system.SimpleRelicsDamageSystem;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
@@ -14,6 +15,6 @@ public class SimpleRelicsPlugin extends JavaPlugin {
 
     @Override
     protected void setup() {
-
+        this.getEntityStoreRegistry().registerSystem(new SimpleRelicsDamageSystem());
     }
 }
