@@ -1,0 +1,49 @@
+{
+  "TranslationProperties": {
+    "Name": "Emerald Cross",
+    "Description": "Restores 50% of maximum health on fatal damage."
+  },
+  "Id": "SimpleRelics_EmeraldCross",
+  "Model": "Items/SimpleRelics_EmeraldCross/model.blockymodel",
+  "Texture": "Items/SimpleRelics_EmeraldCross/texture.png",
+  "Icon": "Icons/ItemsGenerated/SimpleRelics_EmeraldCross.png",
+  "Quality": "Uncommon",
+  "MaxStack": 1,
+  "Categories": [
+    "Items.Utility"
+  ],
+  "Utility": {
+    "Usable": true
+  },
+  "InteractionConfig": {
+    "Priorities": {
+      "Secondary": -1
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 2.5,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Rock_Gem_Emerald",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 100
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  }
+}
