@@ -19,11 +19,7 @@ public final class RelicRegistry {
     }
 
     public static Relic get(String id) {
-        Relic relic = RELICS.get(id);
-        if (relic == null) {
-            throw new IllegalStateException("Unknown relic: " + id);
-        }
-        return relic;
+        return  RELICS.get(id);
     }
 
     public static Collection<Relic> all() {
