@@ -19,7 +19,7 @@ public final class RelicRegistry {
     }
 
     public static Relic get(String id) {
-        return  RELICS.get(id);
+        return RELICS.get(id);
     }
 
     public static Collection<Relic> all() {

@@ -71,10 +71,12 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        LOGGER.atInfo().log("Player is equipping utility item. Trying to activate effects.");
         Relic relic = RelicRegistry.get(utilityItem.getItemId());
 
-        if(relic == null) return;
+        if(relic == null) {
+            LOGGER.atInfo().log("Player is not using a relic.");
+            return;
+        }
 
         RelicContext context = new RelicContext(player, damage, stats, store, ref, commandBuffer);
 
