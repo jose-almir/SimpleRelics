@@ -22,7 +22,15 @@ public class Relics {
                     )
             );
 
+    public static final Relic TEST_RELIC =
+            new Relic(
+                    "SimpleRelics_TestRelic",
+                    new FatalDamageTrigger(),
+                    List.of()
+            );
+
     public static void registerAll() {
+        RelicRegistry.register(TEST_RELIC);
         RelicRegistry.register(EMERALD_CROSS);
     }
 

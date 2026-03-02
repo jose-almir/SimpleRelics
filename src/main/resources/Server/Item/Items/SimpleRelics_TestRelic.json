@@ -1,0 +1,23 @@
+{
+  "TranslationProperties": {
+    "Name": "items.SimpleRelics_TestRelic.name",
+    "Description": "items.SimpleRelics_TestRelic.description"
+  },
+  "Id": "SimpleRelics_TestRelic",
+  "Model": "Items/SimpleRelics_TestRelic/model.blockymodel",
+  "Texture": "Items/SimpleRelics_TestRelic/texture.png",
+  "Icon": "Icons/ItemsGenerated/SimpleRelics_TestRelic.png",
+  "Quality": "Developer",
+  "MaxStack": 1,
+  "Categories": [
+    "Items.Utility"
+  ],
+  "Utility": {
+    "Usable": true
+  },
+  "InteractionConfig": {
+    "Priorities": {
+      "Secondary": -1
+    }
+  }
+}
