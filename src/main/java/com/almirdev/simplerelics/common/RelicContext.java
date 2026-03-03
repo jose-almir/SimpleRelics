@@ -54,4 +54,16 @@ public record RelicContext(
     public boolean isFatal() {
         return currentHealth() - damage.getAmount() <= 0;
     }
+
+    public void cancelDamage() {
+        damage.setCancelled(true);
+    }
+
+    public void setDamage(float amount) {
+        damage.setAmount(amount);
+    }
+
+    public void multiplyDamage(float multiplier) {
+        damage.setAmount(damage.getAmount() * multiplier);
+    }
 }
