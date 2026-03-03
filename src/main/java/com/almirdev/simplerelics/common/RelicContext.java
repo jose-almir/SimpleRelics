@@ -4,6 +4,7 @@ import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
 import com.hypixel.hytale.server.core.modules.entitystats.EntityStatMap;
 import com.hypixel.hytale.server.core.modules.entitystats.EntityStatValue;
@@ -15,6 +16,7 @@ import java.util.Objects;
 public record RelicContext(
         Player player,
         Damage damage,
+        ItemStack relicItem,
         EntityStatMap entityStatMap,
         EntityStatValue health,
         Store<EntityStore> store,
@@ -24,6 +26,7 @@ public record RelicContext(
     public RelicContext(
             Player player,
             Damage damage,
+            ItemStack relicItem,
             EntityStatMap stats,
             Store<EntityStore> store,
             Ref<EntityStore> ref,
@@ -32,6 +35,7 @@ public record RelicContext(
         this(
                 Objects.requireNonNull(player),
                 Objects.requireNonNull(damage),
+                Objects.requireNonNull(relicItem),
                 Objects.requireNonNull(stats),
                 Objects.requireNonNull(
                         stats.get(DefaultEntityStatTypes.getHealth()),
