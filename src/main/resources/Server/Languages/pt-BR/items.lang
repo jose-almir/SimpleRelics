@@ -6,3 +6,5 @@ SimpleRelics_TestRelic.name = Relíquia de Teste
 SimpleRelics_TestRelic.description = Uso de desenvolvedor
 SimpleRelics_LuckyHorseshoe.name = Ferradura da Sorte
 SimpleRelics_LuckyHorseshoe.description = Nega o dano de queda
+SimpleRelics_BloodChalice.name = Cálice de Sangue
+SimpleRelics_BloodChalice.description = Consome a vitalidade daqueles ao seu redor

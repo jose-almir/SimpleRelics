@@ -2,10 +2,7 @@ package com.almirdev.simplerelics.common;
 
 import com.almirdev.simplerelics.common.consumption.ConsumeOnUse;
 import com.almirdev.simplerelics.common.consumption.NeverConsume;
-import com.almirdev.simplerelics.common.effects.CancelDamageEffect;
-import com.almirdev.simplerelics.common.effects.NotificationEffect;
-import com.almirdev.simplerelics.common.effects.PlaySoundEffect;
-import com.almirdev.simplerelics.common.effects.RestoreHealthEffect;
+import com.almirdev.simplerelics.common.effects.*;
 import com.almirdev.simplerelics.common.triggers.FallDamageTrigger;
 import com.almirdev.simplerelics.common.triggers.FatalDamageTrigger;
 
@@ -44,10 +41,21 @@ public class Relics {
                     new NeverConsume()
             );
 
+    public static final Relic BLOOD_CHALICE =
+            new Relic(
+                    "SimpleRelics_BloodChalice",
+                    new FatalDamageTrigger(),
+                    List.of(
+                            new VampiricEffect(8, 30, 0.25f)
+                    ),
+                    new ConsumeOnUse()
+            );
+
     public static void registerAll() {
         RelicRegistry.register(TEST_RELIC);
         RelicRegistry.register(EMERALD_CROSS);
         RelicRegistry.register(LUCKY_HORSESHOE);
+        RelicRegistry.register(BLOOD_CHALICE);
     }
 
     private Relics() {}

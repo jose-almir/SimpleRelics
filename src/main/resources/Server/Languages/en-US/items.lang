@@ -6,4 +6,6 @@ SimpleRelics_TestRelic.name = Test Relic
 SimpleRelics_TestRelic.description = Developer usage
 SimpleRelics_LuckyHorseshoe.name = Lucky Horseshoe
 SimpleRelics_LuckyHorseshoe.description = Negates fall damage
+SimpleRelics_BloodChalice.name = Blood Chalice
+SimpleRelics_BloodChalice.description = Consumes the vitality of those around you
 

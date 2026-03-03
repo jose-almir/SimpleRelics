@@ -1,5 +1,6 @@
 package com.almirdev.simplerelics.system;
 
+import com.almirdev.simplerelics.common.RelicDamage;
 import com.almirdev.simplerelics.common.Relic;
 import com.almirdev.simplerelics.common.RelicContext;
 import com.almirdev.simplerelics.common.RelicRegistry;
@@ -41,6 +42,11 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
     public void handle(int i, @NonNullDecl ArchetypeChunk<EntityStore> archetypeChunk, @NonNullDecl Store<EntityStore> store, @NonNullDecl CommandBuffer<EntityStore> commandBuffer, @NonNullDecl Damage damage) {
         if (damage.isCancelled()) {
             LOGGER.atInfo().log("Skipping damage due to cancelled.");
+            return;
+        }
+
+        if(RelicDamage.isRelicDamage(damage)) {
+            LOGGER.atInfo().log("Skipping damage due to relic damage.");
             return;
         }
 
