@@ -78,8 +78,8 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        RelicContext context = new RelicContext(player, damage, stats, store, ref, commandBuffer);
+        RelicContext context = new RelicContext(player, damage, utilityItem, stats, store, ref, commandBuffer);
 
-        relic.tryActivate(context, utilityItem);
+        relic.tryActivate(context);
     }
 }

@@ -4,5 +4,6 @@ SimpleRelics_EmeraldCross.notification_title = I SAVED YOU
 SimpleRelics_EmeraldCross.notification_subtitle = You are so lucky...
 SimpleRelics_TestRelic.name = Test Relic
 SimpleRelics_TestRelic.description = Developer usage
-
+SimpleRelics_LuckyHorseshoe.name = Lucky Horseshoe
+SimpleRelics_LuckyHorseshoe.description = Negates fall damage
 

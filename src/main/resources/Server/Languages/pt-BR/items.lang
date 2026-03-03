@@ -4,3 +4,5 @@ SimpleRelics_EmeraldCross.notification_title = EU TE SALVEI
 SimpleRelics_EmeraldCross.notification_subtitle = Que sorte você tem...
 SimpleRelics_TestRelic.name = Relíquia de Teste
 SimpleRelics_TestRelic.description = Uso de desenvolvedor
+SimpleRelics_LuckyHorseshoe.name = Ferradura da Sorte
+SimpleRelics_LuckyHorseshoe.description = Nega o dano de queda
