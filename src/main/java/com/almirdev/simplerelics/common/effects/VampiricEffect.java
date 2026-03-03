@@ -2,6 +2,7 @@ package com.almirdev.simplerelics.common.effects;
 
 import com.almirdev.simplerelics.common.RelicContext;
 import com.almirdev.simplerelics.utils.RelicUtils;
+import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.modules.entitystats.asset.DefaultEntityStatTypes;
@@ -10,7 +11,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import java.util.List;
 
 public class VampiricEffect implements RelicEffect {
-    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(VampiricEffect.class);
     private final float radius;
     private final float damageAmount;
     private final float lifeStealRatio;
@@ -27,7 +28,7 @@ public class VampiricEffect implements RelicEffect {
 
         if(nearby.isEmpty()) return;
 
-        LOGGER.atInfo().log("Detected %d entities. Causing damage to all.");
+        LOGGER.atFine().log("Detected %d entities. Causing damage to all.");
 
         for (Ref<EntityStore> entityStoreRef : nearby) {
             RelicUtils.dispatchDamageEvent(context, entityStoreRef, damageAmount);

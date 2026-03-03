@@ -3,13 +3,13 @@ package com.almirdev.simplerelics.common;
 import com.almirdev.simplerelics.common.consumption.RelicConsumptionStrategy;
 import com.almirdev.simplerelics.common.effects.RelicEffect;
 import com.almirdev.simplerelics.common.triggers.RelicTrigger;
+import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.logger.HytaleLogger;
-import com.hypixel.hytale.server.core.inventory.ItemStack;
 
 import java.util.List;
 
 public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects, RelicConsumptionStrategy consumptionStrategy) {
-    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(Relic.class);
 
     public void tryActivate(RelicContext context) {
         if(!trigger.shouldActivate(context)) {

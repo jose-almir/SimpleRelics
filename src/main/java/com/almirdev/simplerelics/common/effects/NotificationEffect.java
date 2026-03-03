@@ -1,6 +1,7 @@
 package com.almirdev.simplerelics.common.effects;
 
 import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.UUIDComponent;
@@ -12,7 +13,7 @@ import com.hypixel.hytale.server.core.util.NotificationUtil;
 import java.awt.*;
 
 public class NotificationEffect implements RelicEffect {
-    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(NotificationEffect.class);
     private final String titleKey;
     private final String subtitleKey;
     private final Color color;

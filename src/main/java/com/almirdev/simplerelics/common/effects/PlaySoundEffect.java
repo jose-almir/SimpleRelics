@@ -1,6 +1,7 @@
 package com.almirdev.simplerelics.common.effects;
 
 import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent;
@@ -10,7 +11,7 @@ import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.World;
 
 public class PlaySoundEffect implements RelicEffect {
-    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(PlaySoundEffect.class);
     private final String soundId;
 
     public PlaySoundEffect(String soundId) {

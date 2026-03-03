@@ -3,6 +3,7 @@ package com.almirdev.simplerelics.system;
 import com.almirdev.simplerelics.common.Relic;
 import com.almirdev.simplerelics.common.RelicContext;
 import com.almirdev.simplerelics.common.RelicRegistry;
+import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
@@ -18,7 +19,7 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 
 public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Damage> {
-    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
+    public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(SimpleRelicsDamageSystem.class);
 
     public SimpleRelicsDamageSystem() {
         super(Damage.class);
