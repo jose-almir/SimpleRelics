@@ -4,7 +4,7 @@
     "Description": "items.SimpleRelics_BloodChalice.description"
   },
   "Id": "SimpleRelics_BloodChalice",
-  "Model": "Items/SimpleRelics_BloodChalice/model.blockymodel",
+  "Model": "Items/SimpleRelics_BloodChalice/SimpleRelics_BloodChalice.blockymodel",
   "Texture": "Items/SimpleRelics_BloodChalice/texture.png",
   "Icon": "Icons/ItemsGenerated/SimpleRelics_BloodChalice.png",
   "PlayerAnimationsId": "Torch",
