@@ -4,7 +4,7 @@
     "Description": "items.SimpleRelics_EmeraldCross.description"
   },
   "Id": "SimpleRelics_EmeraldCross",
-  "Model": "Items/SimpleRelics_EmeraldCross/model.blockymodel",
+  "Model": "Items/SimpleRelics_EmeraldCross/SimpleRelics_EmeraldCross.blockymodel",
   "Texture": "Items/SimpleRelics_EmeraldCross/texture.png",
   "Icon": "Icons/ItemsGenerated/SimpleRelics_EmeraldCross.png",
   "PlayerAnimationsId": "Torch",
