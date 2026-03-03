@@ -7,6 +7,7 @@
   "Model": "Items/SimpleRelics_EmeraldCross/model.blockymodel",
   "Texture": "Items/SimpleRelics_EmeraldCross/texture.png",
   "Icon": "Icons/ItemsGenerated/SimpleRelics_EmeraldCross.png",
+  "PlayerAnimationsId": "Torch",
   "Quality": "Uncommon",
   "MaxStack": 1,
   "Categories": [
