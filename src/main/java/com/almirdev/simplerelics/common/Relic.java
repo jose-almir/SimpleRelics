@@ -1,5 +1,6 @@
 package com.almirdev.simplerelics.common;
 
+import com.almirdev.simplerelics.common.consumption.RelicConsumptionStrategy;
 import com.almirdev.simplerelics.common.effects.RelicEffect;
 import com.almirdev.simplerelics.common.triggers.RelicTrigger;
 import com.hypixel.hytale.logger.HytaleLogger;
@@ -7,10 +8,10 @@ import com.hypixel.hytale.server.core.inventory.ItemStack;
 
 import java.util.List;
 
-public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects) {
+public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects, RelicConsumptionStrategy consumptionStrategy) {
     public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
 
-    public void tryActivate(RelicContext context, ItemStack stack) {
+    public void tryActivate(RelicContext context) {
         if(!trigger.shouldActivate(context)) {
             LOGGER.atInfo().log("Trigger not activated");
             return;
@@ -21,10 +22,6 @@ public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects) 
             effect.apply(context);
         }
 
-        LOGGER.atInfo().log("Consuming relic item");
-        context.player()
-                .getInventory()
-                .getUtility()
-                .removeItemStack(stack);
+        consumptionStrategy.handleConsumption(context);
     }
 }
