@@ -36,7 +36,11 @@ public class VampiricEffect implements RelicEffect {
         int healthIndex = DefaultEntityStatTypes.getHealth();
         float totalHeal = nearby.size() * damageAmount * lifeStealRatio;
 
-        LOGGER.atInfo().log("Restoring to player health: %f points", totalHeal);
-        context.entityStatMap().addStatValue(healthIndex, Math.min(context.health().getMax(), totalHeal));
+        float missing = context.health().getMax() - context.health().get();
+        float heal = Math.min(missing, totalHeal);
+
+        LOGGER.atInfo().log("Restoring to player health: %f points", heal);
+        context.entityStatMap().addStatValue(healthIndex, heal);
+
     }
 }
