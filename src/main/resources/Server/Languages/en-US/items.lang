@@ -8,4 +8,5 @@ SimpleRelics_LuckyHorseshoe.name = Lucky Horseshoe
 SimpleRelics_LuckyHorseshoe.description = Negates fall damage
 SimpleRelics_BloodChalice.name = Blood Chalice
 SimpleRelics_BloodChalice.description = Consumes the vitality of those around you
-
+SimpleRelics_BloodChalice.notification_title = I SAVED YOU
+SimpleRelics_BloodChalice.notification_subtitle = You survived taking life from others

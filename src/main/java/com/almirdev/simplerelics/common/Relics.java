@@ -46,7 +46,14 @@ public class Relics {
                     "SimpleRelics_BloodChalice",
                     new FatalDamageTrigger(),
                     List.of(
-                            new VampiricEffect(8, 30, 0.25f)
+                            new CancelDamageEffect(),
+                            new VampiricEffect(8, 30, 0.3f),
+                            new NotificationEffect(
+                                    "items.SimpleRelics_BloodChalice.notification_title",
+                                    "items.SimpleRelics_BloodChalice.notification_subtitle",
+                                    Color.RED
+                            ),
+                            new PlaySoundEffect("SFX_Divine_Respawn")
                     ),
                     new ConsumeOnUse()
             );

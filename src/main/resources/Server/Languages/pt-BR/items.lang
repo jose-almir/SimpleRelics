@@ -8,3 +8,5 @@ SimpleRelics_LuckyHorseshoe.name = Ferradura da Sorte
 SimpleRelics_LuckyHorseshoe.description = Nega o dano de queda
 SimpleRelics_BloodChalice.name = Cálice de Sangue
 SimpleRelics_BloodChalice.description = Consome a vitalidade daqueles ao seu redor
+SimpleRelics_BloodChalice.notification_title = EU TE SALVEI
+SimpleRelics_BloodChalice.notification_subtitle = Você sobreviveu tirando a vida dos outros
