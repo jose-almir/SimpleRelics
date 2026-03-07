@@ -24,7 +24,7 @@ public class Relics {
                             ),
                             ApplyEntityEffect.toSelf(
                                     "Immune",
-                                    2,
+                                    3,
                                     OverlapBehavior.OVERWRITE
                             ),
                             new NotificationEffect("items.SimpleRelics_EmeraldCross.notification_title", "items.SimpleRelics_EmeraldCross.notification_subtitle", Color.GREEN),
