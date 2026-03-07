@@ -33,7 +33,7 @@ public class VampiricEffect implements RelicEffect {
 
         if (nearby.isEmpty()) return;
 
-        LOGGER.atFine().log("Detected %d entities. Causing damage to all.");
+        LOGGER.atFine().log("Detected %d entities. Causing damage to all.", nearby.size());
 
         for (Ref<EntityStore> entityStoreRef : nearby) {
             Damage.EntitySource source = new Damage.EntitySource(context.ref());
