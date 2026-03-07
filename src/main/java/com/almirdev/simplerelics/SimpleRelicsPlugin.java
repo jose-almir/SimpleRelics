@@ -4,7 +4,6 @@ import com.almirdev.simplerelics.common.RelicPlayerData;
 import com.almirdev.simplerelics.common.Relics;
 import com.almirdev.simplerelics.system.SimpleRelicsDamageSystem;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
-import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.component.ComponentType;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
