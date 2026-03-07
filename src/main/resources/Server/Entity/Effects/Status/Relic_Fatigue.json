@@ -1,0 +1,8 @@
+{
+  "Duration": 6,
+  "OverlapBehavior": "Overwrite",
+  "RemovalBehavior": "Duration",
+  "Infinite": false,
+  "Debuff": false,
+  "StatusEffectIcon": "Icons/ItemsGenerated/SimpleRelics_Relic_Fatigue_Effect.png"
+}
