@@ -5,6 +5,7 @@ import com.almirdev.simplerelics.common.consumption.NeverConsume;
 import com.almirdev.simplerelics.common.effects.*;
 import com.almirdev.simplerelics.common.triggers.FallDamageTrigger;
 import com.almirdev.simplerelics.common.triggers.FatalDamageTrigger;
+import com.hypixel.hytale.server.core.asset.type.entityeffect.config.OverlapBehavior;
 
 import java.awt.*;
 import java.util.List;
@@ -16,7 +17,16 @@ public class Relics {
                     new FatalDamageTrigger(),
                     List.of(
                             new CancelDamageEffect(),
-                            new RestoreHealthEffect(0.5f),
+                            ApplyEntityEffect.toSelf(
+                                    "Potion_Health_Greater_Regen",
+                                    10f,
+                                    OverlapBehavior.OVERWRITE
+                            ),
+                            ApplyEntityEffect.toSelf(
+                                    "Immune",
+                                    2,
+                                    OverlapBehavior.OVERWRITE
+                            ),
                             new NotificationEffect("items.SimpleRelics_EmeraldCross.notification_title", "items.SimpleRelics_EmeraldCross.notification_subtitle", Color.GREEN),
                             new PlaySoundEffect("SFX_Divine_Respawn")
                     ),
