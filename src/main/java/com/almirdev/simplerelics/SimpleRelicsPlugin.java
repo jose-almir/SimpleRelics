@@ -23,8 +23,10 @@ public class SimpleRelicsPlugin extends JavaPlugin {
 
     @Override
     protected void setup() {
-        boolean devMode = true;
-        SimpleRelicsLog.configure(devMode ? Level.INFO : Level.WARNING);
+        Level level = Level.parse(
+                System.getProperty("simplerelics.logLevel", "WARNING")
+        );
+        SimpleRelicsLog.configure(level);
         Relics.registerAll();
         this.relicPlayerDataComponent = this.getEntityStoreRegistry().registerComponent(
                 RelicPlayerData.class,
