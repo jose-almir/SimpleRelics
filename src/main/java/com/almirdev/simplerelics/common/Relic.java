@@ -11,10 +11,10 @@ import java.util.List;
 public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects, RelicConsumptionStrategy consumptionStrategy) {
     public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(Relic.class);
 
-    public void tryActivate(RelicContext context) {
+    public boolean tryActivate(RelicContext context) {
         if(!trigger.shouldActivate(context)) {
             LOGGER.atInfo().log("Trigger not activated");
-            return;
+            return false;
         }
 
         LOGGER.atInfo().log("Activating relic effects: %d", effects.size());
@@ -23,5 +23,7 @@ public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects, 
         }
 
         consumptionStrategy.handleConsumption(context);
+
+        return true;
     }
 }

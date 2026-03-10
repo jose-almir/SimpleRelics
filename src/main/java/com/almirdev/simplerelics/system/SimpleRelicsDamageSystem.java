@@ -1,25 +1,29 @@
 package com.almirdev.simplerelics.system;
 
-import com.almirdev.simplerelics.common.RelicDamage;
-import com.almirdev.simplerelics.common.Relic;
-import com.almirdev.simplerelics.common.RelicContext;
-import com.almirdev.simplerelics.common.RelicRegistry;
+import com.almirdev.simplerelics.SimpleRelicsPlugin;
+import com.almirdev.simplerelics.common.*;
+import com.almirdev.simplerelics.common.effects.ApplyEntityEffect;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.logger.HytaleLogger;
+import com.hypixel.hytale.server.core.asset.type.entityeffect.config.OverlapBehavior;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
 import com.hypixel.hytale.server.core.modules.entity.damage.DamageModule;
 import com.hypixel.hytale.server.core.modules.entitystats.EntityStatMap;
+import com.hypixel.hytale.server.core.modules.time.TimeResource;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
+import java.time.Instant;
+
 
 public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Damage> {
+    public static final long RELIC_ACTIVATION_COOLDOWN_SECONDS = 6;
     public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(SimpleRelicsDamageSystem.class);
 
     public SimpleRelicsDamageSystem() {
@@ -72,8 +76,27 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
+        RelicPlayerData data = commandBuffer.ensureAndGetComponent(ref, SimpleRelicsPlugin.instance.getRelicPlayerDataComponent());
+        TimeResource time = store.getResource(TimeResource.getResourceType());
+        Instant now = time.getNow();
+
+        if(!data.canActivateRelic(now)) {
+            LOGGER.atInfo().log("Activation cooldown is active. Skipping...");
+            return;
+        }
+
         RelicContext context = new RelicContext(player, damage, utilityItem, stats, store, ref, commandBuffer);
 
-        relic.tryActivate(context);
+        boolean hasActivated = relic.tryActivate(context);
+
+        if(hasActivated) {
+            LOGGER.atInfo().log("Activated relic. Locking activation for 6 seconds.");
+            data.lockActivation(now, RELIC_ACTIVATION_COOLDOWN_SECONDS);
+            ApplyEntityEffect.toSelf(
+                    "Relic_Fatigue",
+                    RELIC_ACTIVATION_COOLDOWN_SECONDS,
+                    OverlapBehavior.OVERWRITE
+            ).apply(context);
+        }
     }
 }

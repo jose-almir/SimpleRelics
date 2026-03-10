@@ -1,7 +1,7 @@
 {
     "Group": "com.almirdev.simplerelics",
     "Name": "SimpleRelics",
-    "Version": "1.0",
+    "Version": "1.0.1",
     "Description": "SimpleRelics adds rare, single-use relics that save the player from death with subtle and balanced effects.",
     "Authors": [
         {
