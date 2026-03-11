@@ -24,7 +24,7 @@ public class SimpleRelicsPlugin extends JavaPlugin {
     @Override
     protected void setup() {
         Level level = Level.parse(
-                System.getProperty("simplerelics.logLevel", "WARNING")
+                System.getProperty("simplerelics.logLevel", "FINE")
         );
         SimpleRelicsLog.configure(level);
         Relics.registerAll();

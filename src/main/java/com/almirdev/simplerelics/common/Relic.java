@@ -11,7 +11,7 @@ import java.util.List;
 public record Relic(String id, RelicTrigger trigger, List<RelicEffect> effects, RelicConsumptionStrategy consumptionStrategy) {
     public static final HytaleLogger LOGGER = SimpleRelicsLog.getLogger(Relic.class);
 
-    public boolean tryActivate(RelicContext context) {
+    public boolean tryActivate(RelicHolderContext context) {
         if(!trigger.shouldActivate(context)) {
             LOGGER.atInfo().log("Trigger not activated");
             return false;

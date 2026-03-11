@@ -1,7 +1,7 @@
 package com.almirdev.simplerelics.common.effects;
 
 import com.almirdev.simplerelics.common.RelicDamage;
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 import com.almirdev.simplerelics.utils.RelicUtils;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.component.Ref;
@@ -23,12 +23,12 @@ public class RadialDamageEffect implements RelicEffect {
     }
 
     @Override
-    public void apply(RelicContext context) {
+    public void apply(RelicHolderContext context) {
         List<Ref<EntityStore>> nearby = RelicUtils.getPlayerNearbyEntities(context, this.radius);
         LOGGER.atFine().log("There are %d entities. This entities will receive %f points of damage", nearby.size(), damageAmount);
 
         for (Ref<EntityStore> entityStoreRef : nearby) {
-            Damage.EntitySource source = new Damage.EntitySource(context.ref());
+            Damage.EntitySource source = new Damage.EntitySource(context.getHolderRef());
             Damage damage = RelicDamage.Builder.create(source, damageAmount).build();
             DamageSystems.executeDamage(entityStoreRef, context.buffer(), damage);
         }

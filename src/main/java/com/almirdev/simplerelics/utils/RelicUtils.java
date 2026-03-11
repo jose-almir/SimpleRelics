@@ -1,6 +1,6 @@
 package com.almirdev.simplerelics.utils;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.spatial.SpatialResource;
 import com.hypixel.hytale.math.vector.Vector3d;
@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RelicUtils {
-    public static List<Ref<EntityStore>> getPlayerNearbyEntities(RelicContext context, double radius) {
-        TransformComponent playerTransform = context.buffer().getComponent(context.ref(), TransformComponent.getComponentType());
-        ModelComponent modelComponent = context.buffer().getComponent(context.ref(), ModelComponent.getComponentType());
+    public static List<Ref<EntityStore>> getPlayerNearbyEntities(RelicHolderContext context, double radius) {
+        TransformComponent playerTransform = context.buffer().getComponent(context.getHolderRef(), TransformComponent.getComponentType());
+        ModelComponent modelComponent = context.buffer().getComponent(context.getHolderRef(), ModelComponent.getComponentType());
 
         if(playerTransform == null || modelComponent == null) return List.of();
 

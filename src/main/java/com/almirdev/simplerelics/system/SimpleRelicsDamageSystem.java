@@ -9,11 +9,11 @@ import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.asset.type.entityeffect.config.OverlapBehavior;
+import com.hypixel.hytale.server.core.entity.EntityUtils;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
 import com.hypixel.hytale.server.core.modules.entity.damage.DamageModule;
-import com.hypixel.hytale.server.core.modules.entitystats.EntityStatMap;
 import com.hypixel.hytale.server.core.modules.time.TimeResource;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
@@ -54,12 +54,10 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        Ref<EntityStore> ref = archetypeChunk.getReferenceTo(i);
-        Player player = store.getComponent(ref, Player.getComponentType());
-        EntityStatMap stats = store.getComponent(ref, EntityStatMap.getComponentType());
+        Player player = EntityUtils.toHolder(i, archetypeChunk).getComponent(Player.getComponentType());;
 
-        if (player == null || stats == null) {
-            LOGGER.atWarning().log("Player or EntityStatMap is null.");
+        if (player == null || player.getReference() == null) {
+            LOGGER.atWarning().log("Player is null.");
             return;
         }
 
@@ -76,7 +74,7 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        RelicPlayerData data = commandBuffer.ensureAndGetComponent(ref, SimpleRelicsPlugin.instance.getRelicPlayerDataComponent());
+        RelicPlayerData data = commandBuffer.ensureAndGetComponent(player.getReference(), SimpleRelicsPlugin.instance.getRelicPlayerDataComponent());
         TimeResource time = store.getResource(TimeResource.getResourceType());
         Instant now = time.getNow();
 
@@ -85,17 +83,16 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        RelicContext context = new RelicContext(player, damage, utilityItem, stats, store, ref, commandBuffer);
+        RelicHolderContext context = new RelicHolderContext(player, damage, utilityItem, store, commandBuffer);
 
         boolean hasActivated = relic.tryActivate(context);
 
         if(hasActivated) {
             LOGGER.atInfo().log("Activated relic. Locking activation for 6 seconds.");
             data.lockActivation(now, RELIC_ACTIVATION_COOLDOWN_SECONDS);
-            ApplyEntityEffect.toSelf(
+            ApplyEntityEffect.toHolder(
                     "Relic_Fatigue",
-                    RELIC_ACTIVATION_COOLDOWN_SECONDS,
-                    OverlapBehavior.OVERWRITE
+                    RELIC_ACTIVATION_COOLDOWN_SECONDS
             ).apply(context);
         }
     }

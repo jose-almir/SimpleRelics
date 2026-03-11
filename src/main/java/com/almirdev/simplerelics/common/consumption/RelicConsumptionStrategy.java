@@ -1,7 +1,7 @@
 package com.almirdev.simplerelics.common.consumption;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 
 public interface RelicConsumptionStrategy {
-    void handleConsumption(RelicContext context);
+    void handleConsumption(RelicHolderContext context);
 }

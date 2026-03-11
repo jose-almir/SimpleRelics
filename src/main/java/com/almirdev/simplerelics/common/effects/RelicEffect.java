@@ -1,7 +1,7 @@
 package com.almirdev.simplerelics.common.effects;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 
 public interface RelicEffect {
-    void apply(RelicContext context);
+    void apply(RelicHolderContext context);
 }

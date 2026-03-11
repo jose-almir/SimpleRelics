@@ -1,6 +1,6 @@
 package com.almirdev.simplerelics.common.effects;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 import com.almirdev.simplerelics.utils.RelicUtils;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.component.Ref;
@@ -29,16 +29,16 @@ public class ApplyEntityEffect implements RelicEffect {
         this.radius = radius;
     }
 
-    public static ApplyEntityEffect toSelf(String effectAssetKey, float duration, OverlapBehavior overlapBehavior) {
-        return new ApplyEntityEffect(effectAssetKey, duration, overlapBehavior, TargetMode.SELF, 0f);
+    public static ApplyEntityEffect toHolder(String effectAssetKey, float duration) {
+        return new ApplyEntityEffect(effectAssetKey, duration, OverlapBehavior.OVERWRITE, TargetMode.HOLDER, 0f);
     }
 
-    public static ApplyEntityEffect toEnemies(String effectAssetKey, float duration, OverlapBehavior overlapBehavior, float radius) {
-        return new ApplyEntityEffect(effectAssetKey, duration, overlapBehavior, TargetMode.ENEMIES, radius);
+    public static ApplyEntityEffect toEnemies(String effectAssetKey, float duration, float radius) {
+        return new ApplyEntityEffect(effectAssetKey, duration, OverlapBehavior.OVERWRITE, TargetMode.ENEMIES, radius);
     }
 
     @Override
-    public void apply(RelicContext context) {
+    public void apply(RelicHolderContext context) {
         var effect = EntityEffect.getAssetMap().getAsset(effectAssetKey);
 
         if(effect == null) {
@@ -47,7 +47,7 @@ public class ApplyEntityEffect implements RelicEffect {
         }
 
         switch (targetMode) {
-            case SELF -> applyToEntity(context, context.ref());
+            case HOLDER -> applyToEntity(context, context.getHolderRef());
             case ENEMIES -> {
                 var nearby = RelicUtils.getPlayerNearbyEntities(context, radius);
                 for(var ref : nearby) {
@@ -57,7 +57,7 @@ public class ApplyEntityEffect implements RelicEffect {
         }
     }
 
-    private void applyToEntity(RelicContext context, Ref<EntityStore> ref) {
+    private void applyToEntity(RelicHolderContext context, Ref<EntityStore> ref) {
         EffectControllerComponent controller = context.store().getComponent(ref, EffectControllerComponent.getComponentType());
 
 
@@ -67,7 +67,7 @@ public class ApplyEntityEffect implements RelicEffect {
         }
 
         controller.addEffect(
-                context.ref(),
+                context.getHolderRef(),
                 Objects.requireNonNull(EntityEffect.getAssetMap().getAsset(effectAssetKey)),
                 duration,
                 overlapBehavior,
@@ -76,7 +76,7 @@ public class ApplyEntityEffect implements RelicEffect {
     }
 
     public enum TargetMode {
-        SELF,
+        HOLDER,
         ENEMIES
     }
 }

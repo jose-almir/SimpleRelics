@@ -1,6 +1,6 @@
 package com.almirdev.simplerelics.common.effects;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.protocol.SoundCategory;
@@ -19,19 +19,19 @@ public class PlaySoundEffect implements RelicEffect {
     }
 
     @Override
-    public void apply(RelicContext context) {
+    public void apply(RelicHolderContext context) {
         int index = SoundEvent.getAssetMap().getIndex(soundId);
 
-        World world = context.player().getWorld();
+        World world = context.holder().getWorld();
         if (world == null) {
             LOGGER.atWarning().log("World is null.");
             return;
         }
 
         world.execute(() -> {
-            TransformComponent transform = context.store().getComponent(context.ref(), EntityModule.get().getTransformComponentType());
+            TransformComponent transform = context.store().getComponent(context.getHolderRef(), EntityModule.get().getTransformComponentType());
             if (transform == null) return;
-            SoundUtil.playSoundEvent3dToPlayer(context.ref(), index, SoundCategory.UI, transform.getPosition(), context.store());
+            SoundUtil.playSoundEvent3dToPlayer(context.getHolderRef(), index, SoundCategory.UI, transform.getPosition(), context.store());
         });
     }
 }
