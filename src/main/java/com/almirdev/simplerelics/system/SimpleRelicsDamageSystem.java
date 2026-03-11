@@ -8,7 +8,6 @@ import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.logger.HytaleLogger;
-import com.hypixel.hytale.server.core.asset.type.entityeffect.config.OverlapBehavior;
 import com.hypixel.hytale.server.core.entity.EntityUtils;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
@@ -54,7 +53,7 @@ public class SimpleRelicsDamageSystem extends EntityEventSystem<EntityStore, Dam
             return;
         }
 
-        Player player = EntityUtils.toHolder(i, archetypeChunk).getComponent(Player.getComponentType());;
+        Player player = EntityUtils.toHolder(i, archetypeChunk).getComponent(Player.getComponentType());
 
         if (player == null || player.getReference() == null) {
             LOGGER.atWarning().log("Player is null.");
