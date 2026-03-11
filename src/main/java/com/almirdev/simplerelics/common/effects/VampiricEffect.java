@@ -4,13 +4,20 @@ import com.almirdev.simplerelics.common.RelicDamage;
 import com.almirdev.simplerelics.common.RelicContext;
 import com.almirdev.simplerelics.utils.RelicUtils;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
+import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.protocol.ChangeVelocityType;
+import com.hypixel.hytale.protocol.Position;
+import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.entity.knockback.KnockbackComponent;
+import com.hypixel.hytale.server.core.modules.entity.component.ModelComponent;
+import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
 import com.hypixel.hytale.server.core.modules.entity.damage.DamageSystems;
 import com.hypixel.hytale.server.core.modules.entitystats.asset.DefaultEntityStatTypes;
+import com.hypixel.hytale.server.core.modules.physics.component.Velocity;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import java.util.List;
@@ -37,11 +44,7 @@ public class VampiricEffect implements RelicEffect {
 
         for (Ref<EntityStore> entityStoreRef : nearby) {
             Damage.EntitySource source = new Damage.EntitySource(context.ref());
-            Damage damage = RelicDamage.Builder.create(source, damageAmount).withKnockback(
-                    new Vector3d(0, 1, 0),
-                    0.2f,
-                    ChangeVelocityType.Add
-            ).build();
+            Damage damage = RelicDamage.Builder.create(source, damageAmount).build();
             DamageSystems.executeDamage(entityStoreRef, context.buffer(), damage);
         }
 

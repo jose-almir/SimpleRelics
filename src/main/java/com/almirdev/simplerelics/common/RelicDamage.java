@@ -41,17 +41,6 @@ public class RelicDamage {
             return new Builder(source, amount);
         }
 
-        public Builder withKnockback(Vector3d velocity, float duration, ChangeVelocityType velocityType) {
-            KnockbackComponent knockback = new KnockbackComponent();
-            knockback.setVelocity(velocity);
-            knockback.setVelocityType(velocityType);
-            knockback.setDuration(duration);
-
-            damage.putMetaObject(Damage.KNOCKBACK_COMPONENT, knockback);
-
-            return this;
-        }
-
         public Damage build() {
             return damage;
         }
