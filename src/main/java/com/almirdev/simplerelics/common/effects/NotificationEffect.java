@@ -1,6 +1,6 @@
 package com.almirdev.simplerelics.common.effects;
 
-import com.almirdev.simplerelics.common.RelicContext;
+import com.almirdev.simplerelics.common.RelicHolderContext;
 import com.almirdev.simplerelics.utils.SimpleRelicsLog;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.Message;
@@ -25,8 +25,8 @@ public class NotificationEffect implements RelicEffect {
     }
 
     @Override
-    public void apply(RelicContext context) {
-        UUIDComponent uuidComponent = context.store().getComponent(context.ref(), UUIDComponent.getComponentType());
+    public void apply(RelicHolderContext context) {
+        UUIDComponent uuidComponent = context.store().getComponent(context.getHolderRef(), UUIDComponent.getComponentType());
         if (uuidComponent == null) {
             LOGGER.atWarning().log("UUIDComponent is null.");
             return;
