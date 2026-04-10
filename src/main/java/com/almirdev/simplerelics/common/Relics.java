@@ -17,7 +17,7 @@ public class Relics {
                     List.of(
                             new CancelDamageEffect(),
                             ApplyEntityEffect.toHolder(
-                                    "Potion_Health_Greater_Regen",
+                                    "Potion_Health_Regen_Greater",
                                     10
                             ),
                             ApplyEntityEffect.toHolder(
